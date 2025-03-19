@@ -1,6 +1,6 @@
 package org.example.concertbooking.model.dto;
 
-public record User(
+public record UserDTO(
         String user_id,
         String name,
         String email,
