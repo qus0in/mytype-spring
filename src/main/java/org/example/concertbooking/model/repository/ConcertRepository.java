@@ -24,6 +24,10 @@ public class ConcertRepository implements SupabaseRepository<ConcertDTO> {
     public ConcertDTO findById(String concertId) throws Exception {
         String responseJson = findById(concertId,
                 tableName, "concert_id");
-        return objectMapper.readValue(responseJson, new TypeReference<>() {});
+        List<ConcertDTO> concertList = objectMapper.readValue(responseJson, new TypeReference<>(){});
+        if (!concertList.isEmpty()) {
+            return concertList.get(0);
+        }
+        return null;
     }
 }
