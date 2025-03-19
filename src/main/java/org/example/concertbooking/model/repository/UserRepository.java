@@ -11,6 +11,7 @@ public class UserRepository implements SupabaseRepository<UserDTO> {
     final private String tableName = "USER";
 
     public void save(UserDTO userDTO) throws Exception {
+        System.out.println("Saving user: " + userDTO);
         save(userDTO, tableName);
     }
 

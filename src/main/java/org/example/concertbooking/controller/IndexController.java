@@ -4,10 +4,9 @@ import org.example.concertbooking.model.dto.UserDTO;
 import org.example.concertbooking.model.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/")
@@ -25,8 +24,15 @@ public class IndexController {
     }
 
     @PostMapping("/user")
-    String addUser(@RequestBody UserDTO userDTO) throws Exception {
-        userRepository.save(userDTO);
+    // form을 사용한 POST 요청은 ModelAttribute
+    String addUser(@ModelAttribute UserDTO userDTO) throws Exception {
+        System.out.println("도달하고 있니?");
+        userRepository.save(new UserDTO(
+                UUID.randomUUID().toString(),
+                userDTO.name(),
+                userDTO.email(),
+                userDTO.phone()
+        ));
         return "redirect:/";
     }
 }

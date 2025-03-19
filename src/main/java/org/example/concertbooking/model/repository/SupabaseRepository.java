@@ -32,6 +32,7 @@ public interface SupabaseRepository<T> {
         if (response.statusCode() >= 400) {
             throw new RuntimeException(response.statusCode() + " " + response.body());
         }
+        System.out.println(response.body());
     };
 
     default String findById(String id, String tableName, String idColumn) throws Exception {
