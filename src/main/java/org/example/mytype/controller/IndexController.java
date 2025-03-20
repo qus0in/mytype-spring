@@ -24,9 +24,9 @@ public class IndexController {
 
     @RequestMapping("/")
     String index(Model model) throws Exception {
-        String namePrompt = "세계적으로 유명한 사람 64명을 랜덤으로 만들고 그 이름 중에 네가 가장 마음에 드는 거 하나 골라줘~ 제발 이름만 하나 남겨. %s".formatted(UUID.randomUUID());
+        String[] names = {"파이썬", "자바", "자바스크립트", "HTML"};
         for (int i = 1; i <= 4; i++) {
-            ChatResponse chatResponse = aiRepository.useModel("llama", new AIRequest(namePrompt), ChatResponse.class);
+            ChatResponse chatResponse = aiRepository.useModel("llama", new AIRequest("%s와 어울리는 별명을 지어줘. 결과만 리턴해.".formatted(names[i-1])), ChatResponse.class);
             String name = chatResponse.answer();
             model.addAttribute("name%d".formatted(i), name);
             ReasoningChatResponse reasoningChatResponse = aiRepository.useModel("deepseek", new AIRequest("%s와 어울리는 설명을 200자 이내로 한글로 작성".formatted(name)), ReasoningChatResponse.class);

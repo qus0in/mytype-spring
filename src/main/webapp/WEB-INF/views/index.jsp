@@ -19,7 +19,7 @@
 <body>
 <h1>Coding Ideal Type World Cup</h1>
 
-<% for (int i = 1; i <= 2; i++) { %>
+<% for (int i = 1; i <= 4; i++) { %>
 <div class="candidate">
     <h2><%= request.getAttribute("name" + i) %></h2>
     <img src="<%= request.getAttribute("image" + i) %>" alt="<%= request.getAttribute("name" + i) %>">
