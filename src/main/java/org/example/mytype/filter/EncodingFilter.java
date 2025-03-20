@@ -1,4 +1,4 @@
-package org.example.concertbooking.filter;
+package org.example.mytype.filter;
 
 
 import jakarta.servlet.*;
@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 public class EncodingFilter implements Filter {
 

@@ -1,4 +1,4 @@
-package org.example.concertbooking.config;
+package org.example.mytype.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
